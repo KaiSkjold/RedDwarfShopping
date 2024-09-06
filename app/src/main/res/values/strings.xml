@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">RedDwarfShopping</string>
+    <string name="sales_pitch">Everything you ever wanted from your favourite Jupitor Coorporation mining ship</string>
+    <string name="red_dwarf_shopping">RED DWARF SHOPPING</string>
+    <string name="shoppingcart">ShoppingCart</string>
+    <string name="search_online_text">Feel free to search online for any additional product information</string>
+    <string name="input_hint">What do you want to know?</string>
+    <string name="google">Google</string>
+    <string name="selection">Our wide selection of products:</string>
+    <string name="your_shoppingcart">Your Shoppingcart</string>
 </resources>
