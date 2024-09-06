@@ -24,7 +24,7 @@ public class BasketActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_basket);
 
-        shoppingList = findViewById(R.id.product_list);
+        shoppingList = findViewById(R.id.basket_list);
         shoppingListBasket = ProductsData.basketList;
         myAdapter = new ProductAdapter(this, 0, shoppingListBasket);
         shoppingList.setAdapter(myAdapter);
