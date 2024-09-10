@@ -1,10 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/crew_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CrewActivity">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <!--    Top banner-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/red_dwarf_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="@string/red_dwarf_shopping"
+            android:textColor="@color/white"
+            android:textSize="60sp" />
+
+    </LinearLayout>
+    <!--    Close about btn-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/close_about_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/close"
+            android:contentDescription="@string/close_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The Boys from the Dwarf"
+            android:fontFamily="@font/bebas_neue"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:textColor="@color/red"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:id="@+id/group_photo"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/crew_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

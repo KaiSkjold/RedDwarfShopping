@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 
 public class JMCActivity extends AppCompatActivity {
 
-    ImageView groupPhoto;
+    ImageView jmcPhoto;
     Button closeAboutBtn;
 
     @Override
@@ -37,11 +37,11 @@ public class JMCActivity extends AppCompatActivity {
     }
 
         void setPhoto(){
-        groupPhoto = findViewById(R.id.JMC_photo);
+        jmcPhoto = findViewById(R.id.JMC_photo);
         Glide.with(this)
                 .load("https://static.wikia.nocookie.net/reddwarf/images/0/0b/Jmc_recruitment_by_san_tus-d61wni8.jpg/revision/latest?cb=20140603010844")
                 .placeholder(R.mipmap.red_dwarf_ship)
                 .error(R.mipmap.red_dwarf_ship)
-                .into(groupPhoto);
+                .into(jmcPhoto);
     }
 }

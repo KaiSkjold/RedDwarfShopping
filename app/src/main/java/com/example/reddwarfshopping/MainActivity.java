@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private String url = "http://192.168.39.181:8080/reddwarf";
     List<Product> productList;
     ProductAdapter myAdapter;
+    Button jmcBtn;
+    Button crewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +53,24 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         getProducts();
 
-        initGui();
-    }
-
-    void initGui(){
-        Button jmcBtn = findViewById(R.id.about_JMC_btn);
+        jmcBtn = findViewById(R.id.about_JMC_btn);
         jmcBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view1) {
                 Intent intent = new Intent(getApplicationContext(), JMCActivity.class);
                 startActivity(intent);
             }
         });
+
+        crewBtn = findViewById(R.id.about_crew_btn);
+        crewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view2) {
+                Intent intent = new Intent(getApplicationContext(), CrewActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
