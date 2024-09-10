@@ -1,79 +1,83 @@
 package com.example.reddwarfshopping;
 
-public class Product {
+import java.io.Serializable;
 
-    public int Id;
-    public String Name;
-    public String Description;
-    public String Quote;
-    public int SeriesNumber;
-    public Double Price;
-    public int Image;
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public int id;
+    public String name;
+    public String description;
+    public String quote;
+    public int seriesNumber;
+    public Double price;
+    public String image;
     public int Quantity;
 
-    public Product(String name, String description, String quote, int seriesNumber, Double price, int image) {
-        Name = name;
-        Description = description;
-        Quote = quote;
-        SeriesNumber = seriesNumber;
-        Price = price;
-        Image = image;
+    public Product(String name, String description, String quote, int seriesNumber, Double price, String image) {
+        this.name = name;
+        this.description = description;
+        this.quote = quote;
+        this.seriesNumber = seriesNumber;
+        this.price = price;
+        this.image = image;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getQuote() {
-        return Quote;
+        return quote;
     }
 
     public void setQuote(String quote) {
-        Quote = quote;
+        this.quote = quote;
     }
 
     public int getSeriesNumber() {
-        return SeriesNumber;
+        return seriesNumber;
     }
 
     public void setSeriesNumber(int seriesNumber) {
-        SeriesNumber = seriesNumber;
+        this.seriesNumber = seriesNumber;
     }
 
     public Double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(Double price) {
-        Price = price;
+        this.price = price;
     }
 
-    public int getImage() {
-        return Image;
+    public String getImage() {
+        return image;
     }
 
-    public void setImage(int image) {
-        Image = image;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getQuantity() {

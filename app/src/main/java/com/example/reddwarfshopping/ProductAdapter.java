@@ -1,9 +1,12 @@
 package com.example.reddwarfshopping;
 
 
+import static androidx.core.content.ContextCompat.startActivity;
 import static com.example.reddwarfshopping.ProductsData.basketList;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -41,23 +51,19 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         Product currentProduct = productList.get(position);
 
         TextView name = productListItem.findViewById(R.id.product_name);
-        name.setText(currentProduct.Name);
+        name.setText(currentProduct.name);
 
         TextView description = productListItem.findViewById(R.id.product_description);
-        description.setText(currentProduct.Description);
+        description.setText(currentProduct.description);
 
-        TextView quote = productListItem.findViewById(R.id.product_quote);
-        quote.setText(currentProduct.Quote);
-
-        TextView series = productListItem.findViewById(R.id.product_series_number);
-        series.setText(String.valueOf(currentProduct.SeriesNumber));
+//        TextView quote = productListItem.findViewById(R.id.product_quote);
+//        quote.setText(String.format("Famous quote: %s", currentProduct.quote));
+//
+//        TextView series = productListItem.findViewById(R.id.product_series_number);
+//        series.setText(String.format("First appeared in series: %s", currentProduct.seriesNumber));
 
         TextView price = productListItem.findViewById(R.id.product_price);
-        price.setText(String.format("%s£", String.valueOf(currentProduct.Price)));
-
-        ImageView image = productListItem.findViewById(R.id.product_image);
-//        image.setImageResource(currentProduct.Image);
-        image.setImageResource(R.mipmap.red_dwarf_logo);
+        price.setText(String.format("%s£", currentProduct.price));
 
         TextView quantity = productListItem.findViewById(R.id.number_of_items_in_basket);
         quantity.setText(String.valueOf(currentProduct.Quantity));
@@ -68,7 +74,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             int quan = currentProduct.Quantity + 1;
             currentProduct.setQuantity(quan);
             quantity.setText(String.valueOf(currentProduct.Quantity));
-            if(!basketList.contains(currentProduct)) {
+            if (!basketList.contains(currentProduct)) {
                 basketList.add(currentProduct);
             }
 
@@ -77,17 +83,59 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         Button removeFromBasketBtn = productListItem.findViewById(R.id.remove_from_basket_btn);
         removeFromBasketBtn.setOnClickListener(view -> {
             int quan = currentProduct.Quantity - 1;
-            if(currentProduct.Quantity <= 0) {
+            if (currentProduct.Quantity <= 0) {
                 currentProduct.setQuantity(0);
             } else {
                 currentProduct.setQuantity(quan);
             }
             quantity.setText(String.valueOf(currentProduct.Quantity));
-            if(currentProduct.Quantity == 0) {
+            if (currentProduct.Quantity == 0) {
                 basketList.remove(currentProduct);
             }
         });
 
+        ImageView image = productListItem.findViewById(R.id.product_image);
+        Glide.with(getContext())
+                .load(currentProduct.image)
+                .placeholder(R.mipmap.red_dwarf_ship) // optional placeholder while loading
+                .error(R.mipmap.red_dwarf_ship) // optional error image if the URL fails to load
+                .into(image);
+
+
+        Button showPro = productListItem.findViewById(R.id.details_btn);
+        showPro.setOnClickListener(view -> {
+            getProductById(currentProduct.getId());
+        });
+
         return productListItem;
+    }
+
+    void getProductById(int productId) {
+        String url = "http://192.168.39.181:8080/reddwarf";
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        String urlId = url + "/" + productId;
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET, urlId,
+                response -> {
+                    try {
+                        // Deserialize the response into a Product object
+                        Product product = new Gson().fromJson(response, Product.class);
+
+                        // Create an Intent to start the ShowProductActivity
+                        Intent intent = new Intent(context, ShowProductActivity.class);
+                        intent.putExtra("product", product); // Ensure Product implements Serializable or Parcelable
+
+                        // Start the activity
+                        context.startActivity(intent);
+                    } catch (Exception e) {
+                        Log.e("ProductAdapter", "Error parsing product or starting activity", e);
+                    }
+                },
+                error -> Log.e("Volley", "Error fetching product by ID", error)
+        );
+
+        requestQueue.add(stringRequest);
     }
 }

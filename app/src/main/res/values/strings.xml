@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">RedDwarfShopping</string>
-    <string name="sales_pitch">Everything you ever wanted from your favourite Jupitor Coorporation mining ship</string>
+    <string name="sales_pitch">Everything you ever wanted from your favourite Jupitor Mining Coorporation ship</string>
     <string name="red_dwarf_shopping">RED DWARF SHOPPING</string>
     <string name="shoppingcart">ShoppingCart</string>
     <string name="search_online_text">Feel free to search online for any additional product information</string>
@@ -8,4 +8,23 @@
     <string name="google">Google</string>
     <string name="selection">Our wide selection of products:</string>
     <string name="your_shoppingcart">Your Shoppingcart</string>
+    <string name="photo_of_product">photo of product</string>
+    <string name="name_of_product">Name of product</string>
+    <string name="product_description">Product description</string>
+    <string name="product_related_quote">Product related quote</string>
+    <string name="the_series_where_the_product_first_appeared">The series where the product first appeared</string>
+    <string name="price">Price</string>
+    <string name="quantity">In your shoppingcart: </string>
+    <string name="zero">0</string>
+    <string name="add">Add</string>
+    <string name="remove">Remove</string>
+    <string name="add_to_shoppingcart">Add to shoppingcart</string>
+    <string name="more">More</string>
+    <string name="buy">BUY</string>
+    <string name="buy_your_stuff">Buy your stuff</string>
+    <string name="close_button">close button</string>
+    <string name="the_boys_from_the_dwarf">The boys from the dwarf</string>
+    <string name="check_shoppingcart">check shoppingcart</string>
+    <string name="jupiter_mining_coorporation">Jupiter Mining Coorporation</string>
+    <string name="jmc_flavour_text">Jupiter Mining Coorporation is a section of the Space Corp.\n Ships like the much loved Red Dwarf was licenced to conduct mining operations all over Earths solar system,but also used for interstellar mining.\n Every ship was fitted with a great artificial intelligence to help control and navigate the ship.\n Modern technology, like keeping deceased crew members essential for a mission alive through the use of holograms, were also common on all ships.</string>
 </resources>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_basket"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".BasketActivity">
 
     <!--    Top banner-->
@@ -30,7 +31,6 @@
     </LinearLayout>
 
     <!--    Close basket btn-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,14 +41,19 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/close"
-            android:contentDescription="close button" />
+            android:contentDescription="@string/close_button" />
 
     </LinearLayout>
 
     <!--    List of products to buy-->
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
@@ -56,7 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
-            android:fontFamily="@font/architects_daughter"
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="@color/red"
             android:gravity="center"
             android:text="@string/your_shoppingcart"
             android:textSize="40sp"
@@ -65,8 +71,28 @@
         <ListView
             android:id="@+id/basket_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="800dp" />
+
+    </LinearLayout>
+    <!--    </ScrollView>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buy_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/buy_your_stuff"
+            android:fontFamily="@font/bebas_neue"
+            android:text="@string/buy"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
-</TableLayout>
+</LinearLayout>

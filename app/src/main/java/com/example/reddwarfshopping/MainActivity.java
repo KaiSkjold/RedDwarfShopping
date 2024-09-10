@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView shoppingList;
     private RequestQueue requestQueue;
-    String url = "http://192.168.39.181:8080/reddwarf";
+    private String url = "http://192.168.39.181:8080/reddwarf";
     List<Product> productList;
     ProductAdapter myAdapter;
 
@@ -48,14 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         getProducts();
+
         initGui();
     }
 
-    void initGui() {
-        shoppingList = findViewById(R.id.product_list);
-
-
+    void initGui(){
+        Button jmcBtn = findViewById(R.id.about_JMC_btn);
+        jmcBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), JMCActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     protected void onResume() {
@@ -101,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
                     {
                         Type listType = new TypeToken<List<Product>>() {}.getType();
                         productList = new Gson().fromJson(response, listType);
-                        myAdapter = new ProductAdapter(getApplicationContext(), 0, productList);
+                        shoppingList = findViewById(R.id.product_list);
+                        myAdapter = new ProductAdapter(MainActivity.this, 0, productList);
                         shoppingList.setAdapter(myAdapter);
                         myAdapter.notifyDataSetChanged();
                     }
@@ -113,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("Volley", "onErrorResponse", error);
                     }
                 });
-
         requestQueue.add(stringRequest);
     }
+
 }
