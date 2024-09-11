@@ -27,4 +27,5 @@
     <string name="check_shoppingcart">check shoppingcart</string>
     <string name="jupiter_mining_coorporation">Jupiter Mining Coorporation</string>
     <string name="jmc_flavour_text">Jupiter Mining Coorporation is a section of the Space Corp.\n Ships like the much loved Red Dwarf was licenced to conduct mining operations all over Earths solar system,but also used for interstellar mining.\n Every ship was fitted with a great artificial intelligence to help control and navigate the ship.\n Modern technology, like keeping deceased crew members essential for a mission alive through the use of holograms, were also common on all ships.</string>
+    <string name="input_search_landscape">Feel free to search for more info on google here</string>
 </resources>

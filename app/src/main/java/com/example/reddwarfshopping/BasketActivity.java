@@ -1,9 +1,13 @@
 package com.example.reddwarfshopping;
 
+import static com.example.reddwarfshopping.ProductsData.basketList;
+import static com.example.reddwarfshopping.ProductsData.totalPrice;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +33,7 @@ public class BasketActivity extends AppCompatActivity {
     ProductAdapter myAdapter;
     Button closeBasketbtn;
     Button buyStuff;
+    public static TextView totalAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class BasketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_basket);
 
         shoppingList = findViewById(R.id.basket_list);
-        shoppingListBasket = ProductsData.basketList;
+        shoppingListBasket = basketList;
         myAdapter = new ProductAdapter(this, 0, shoppingListBasket);
         shoppingList.setAdapter(myAdapter);
 
@@ -51,6 +56,9 @@ public class BasketActivity extends AppCompatActivity {
     }
 
     void initGui() {
+
+        totalAmount = findViewById(R.id.total_in_basket);
+        totalAmount.setText(String.valueOf(totalPrice));
 
         buyStuff = findViewById(R.id.buy_btn);
         if(shoppingListBasket.isEmpty()) {
@@ -68,6 +76,7 @@ public class BasketActivity extends AppCompatActivity {
         // close activity
         closeBasketbtn = findViewById(R.id.close_basket_btn);
         closeBasketbtn.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();
         });
     }
@@ -81,7 +90,6 @@ public class BasketActivity extends AppCompatActivity {
                     .setIcon(R.mipmap.red_dwarf_logo)
                     .setNegativeButton("Don't buy", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-//                            Toast.makeText(getContext(), "Well, then you get nothing.", Toast.LENGTH_LONG).show();
                             showCustomToast(getContext(), "Well, then you get nothing.");
                             getActivity().finish();
                         }
@@ -89,13 +97,11 @@ public class BasketActivity extends AppCompatActivity {
                     })
                     .setPositiveButton("Buy it all!!", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-//                            Toast.makeText(getContext(), "Great. Money has been automatically withdrawn from your account.", Toast.LENGTH_LONG).show();
-//                            Toast.makeText(getContext(), "Your delivery will arrive in approximately 3 million years.", Toast.LENGTH_LONG).show();
-//                            Toast.makeText(getContext(), "Oh, and thank you for your business.", Toast.LENGTH_LONG).show();
-                            showCustomToast(getContext(), "Great. Money has been automatically withdrawn from your account.");
-                            showCustomToast(getContext(), "Your delivery will arrive in approximately 3 million years.");
-                            showCustomToast(getContext(), " Oh, and thank you for your business.");
-                            getActivity().finish();
+                            showCustomToast(getContext(), "Great. \n Money has been automatically withdrawn from your account.");
+                            showCustomToast(getContext(),"Your delivery will arrive in approximately 3 million years.");
+                            showCustomToast(getContext(), "Oh, and thank you for your business.");
+                            basketList.clear();
+                            startActivity(new Intent(getContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         }
 
                     });

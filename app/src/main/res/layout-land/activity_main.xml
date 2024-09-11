@@ -34,8 +34,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/about_JMC_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:contentDescription="About Jupiter Mining Coorporation"
+            android:drawableEnd="@drawable/mining"
+            android:fontFamily="@font/bebas_neue"
+            android:text="About JMC"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/about_crew_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:contentDescription="About the boys"
+            android:drawableEnd="@drawable/wave_person"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Crew"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_google_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/input_search_landscape"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/google_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableEnd="@drawable/search"
+                android:fontFamily="@font/bebas_neue"
+                android:text="@string/google"
+                android:textSize="30sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/basket_btn"
@@ -50,12 +99,12 @@
 
     </LinearLayout>
 
-    <!--    about JMC etc-->
+    <!--    about etc-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,79 +117,9 @@
             android:textColor="@color/white"
             android:textSize="30sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/about_JMC_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="About Jupiter Mining Coorporation"
-                android:drawableEnd="@drawable/mining"
-                android:fontFamily="@font/bebas_neue"
-                android:text="About JMC"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/about_crew_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:contentDescription="About the boys"
-                android:drawableEnd="@drawable/wave_person"
-                android:fontFamily="@font/bebas_neue"
-                android:text="Crew"
-                android:textSize="30sp" />
-        </LinearLayout>
 
     </LinearLayout>
 
-    <!--    Google search-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/search_on_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/architects_daughter"
-            android:text="@string/search_online_text"
-            android:textAlignment="center"
-            android:textSize="25sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/input_google_text"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/architects_daughter"
-                android:hint="@string/input_hint"
-                android:inputType="text" />
-
-            <Button
-                android:id="@+id/google_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:drawableEnd="@drawable/search"
-                android:fontFamily="@font/bebas_neue"
-                android:text="@string/google"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-    </LinearLayout>
 
     <!--    List of products-->
     <LinearLayout
@@ -158,9 +137,10 @@
 
         <ListView
             android:id="@+id/product_list"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"/>
+            android:layout_marginStart="400dp"/>
+
 
     </LinearLayout>
 

@@ -1,10 +1,10 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/jmc_activity"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/crew_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
+
     <!--    Top banner-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
             android:textSize="60sp" />
 
     </LinearLayout>
+
     <!--    Close about btn-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,40 +44,39 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_margin="30dp">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/jupiter_mining_coorporation"
-            android:fontFamily="@font/bebas_neue"
-            android:textAlignment="center"
-            android:textSize="50sp"
-            android:textColor="@color/red"
-            android:layout_marginBottom="20dp"/>
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:fontFamily="@font/architects_daughter"
-            android:text="@string/jmc_flavour_text"
-            android:textColor="@color/white"
-            android:background="@drawable/toast_background"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/bebas_neue"
+                android:text="The Boys from the Dwarf"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="50sp" />
 
-        <ImageView
-            android:id="@+id/JMC_photo"
+            <ImageView
+                android:id="@+id/group_photo"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/crew_list"
             android:layout_width="match_parent"
-            android:layout_height="600dp"/>
-
-
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

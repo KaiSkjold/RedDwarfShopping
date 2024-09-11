@@ -3,6 +3,7 @@ package com.example.reddwarfshopping;
 
 import static androidx.core.content.ContextCompat.startActivity;
 import static com.example.reddwarfshopping.ProductsData.basketList;
+import static com.example.reddwarfshopping.ProductsData.totalPrice;
 
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +51,10 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         Product currentProduct = productList.get(position);
 
+        if(basketList.isEmpty()) {
+            currentProduct.setQuantity(0);
+            totalPrice = 0.0;
+        }
         TextView name = productListItem.findViewById(R.id.product_name);
         name.setText(currentProduct.name);
 
@@ -71,17 +76,19 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         Button addToBasketBtn = productListItem.findViewById(R.id.add_to_basket_btn);
         addToBasketBtn.setOnClickListener(view -> {
+
             int quan = currentProduct.Quantity + 1;
             currentProduct.setQuantity(quan);
             quantity.setText(String.valueOf(currentProduct.Quantity));
             if (!basketList.contains(currentProduct)) {
                 basketList.add(currentProduct);
             }
-
+            totalPrice += currentProduct.price;
         });
 
         Button removeFromBasketBtn = productListItem.findViewById(R.id.remove_from_basket_btn);
         removeFromBasketBtn.setOnClickListener(view -> {
+
             int quan = currentProduct.Quantity - 1;
             if (currentProduct.Quantity <= 0) {
                 currentProduct.setQuantity(0);
@@ -92,6 +99,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             if (currentProduct.Quantity == 0) {
                 basketList.remove(currentProduct);
             }
+            totalPrice -= currentProduct.price;
         });
 
         ImageView image = productListItem.findViewById(R.id.product_image);
@@ -111,7 +119,8 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     }
 
     void getProductById(int productId) {
-        String url = "http://192.168.39.181:8080/reddwarf";
+//        String url = "http://192.168.39.181:8080/reddwarf";
+        String url = "http://192.168.0.121:8080/reddwarf";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
 
         String urlId = url + "/" + productId;

@@ -62,20 +62,19 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/bebas_neue"
-            android:textColor="@color/red"
             android:gravity="center"
             android:text="@string/your_shoppingcart"
+            android:textColor="@color/red"
             android:textSize="40sp"
             android:textStyle="bold" />
 
         <ListView
             android:id="@+id/basket_list"
             android:layout_width="match_parent"
-            android:layout_height="800dp" />
+            android:layout_height="400dp" />
 
     </LinearLayout>
     <!--    </ScrollView>-->
-
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     ListView shoppingList;
     private RequestQueue requestQueue;
-    private String url = "http://192.168.39.181:8080/reddwarf";
+    //    private String url = "http://192.168.39.181:8080/reddwarf";
+    String url = "http://192.168.0.121:8080/reddwarf";
     List<Product> productList;
     ProductAdapter myAdapter;
     Button jmcBtn;
@@ -72,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 
     @Override
     protected void onResume() {
@@ -114,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response)
-                    {
-                        Type listType = new TypeToken<List<Product>>() {}.getType();
+                    public void onResponse(String response) {
+                        Type listType = new TypeToken<List<Product>>() {
+                        }.getType();
                         productList = new Gson().fromJson(response, listType);
                         shoppingList = findViewById(R.id.product_list);
                         myAdapter = new ProductAdapter(MainActivity.this, 0, productList);
@@ -126,8 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 },
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
+                    public void onErrorResponse(VolleyError error) {
                         Log.e("Volley", "onErrorResponse", error);
                     }
                 });
