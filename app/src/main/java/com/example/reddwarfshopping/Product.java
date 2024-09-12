@@ -13,7 +13,7 @@ public class Product implements Serializable {
     public int seriesNumber;
     public Double price;
     public String image;
-    public int Quantity;
+    public int quantity;
 
     public Product(String name, String description, String quote, int seriesNumber, Double price, String image) {
         this.name = name;
@@ -81,10 +81,10 @@ public class Product implements Serializable {
     }
 
     public int getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-        Quantity = quantity;
+        this.quantity = quantity;
     }
 }

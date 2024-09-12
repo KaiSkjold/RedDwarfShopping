@@ -1,7 +1,6 @@
 package com.example.reddwarfshopping;
 
 import static com.example.reddwarfshopping.ProductsData.basketList;
-import static com.example.reddwarfshopping.ProductsData.totalPrice;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -33,7 +32,7 @@ public class BasketActivity extends AppCompatActivity {
     ProductAdapter myAdapter;
     Button closeBasketbtn;
     Button buyStuff;
-    public static TextView totalAmount;
+//    TextView totalAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +50,17 @@ public class BasketActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+//        setTotal();
         initGui();
     }
 
+
     void initGui() {
 
-        totalAmount = findViewById(R.id.total_in_basket);
-        totalAmount.setText(String.valueOf(totalPrice));
 
+        // buy and finish
         buyStuff = findViewById(R.id.buy_btn);
-        if(shoppingListBasket.isEmpty()) {
+        if (shoppingListBasket.isEmpty()) {
             buyStuff.setOnClickListener(view -> {
                 showCustomToast(getApplicationContext(), "Your shoppingcart is empty.");
             });
@@ -81,12 +80,26 @@ public class BasketActivity extends AppCompatActivity {
         });
     }
 
+//    void setTotal(){
+//        totalAmount = findViewById(R.id.total_in_basket);
+//        double sum = 1e-6;
+//        for (Product i : basketList){
+//            sum += (i.getPrice() * i.getQuantity());
+//        }
+//        sum = (double)Math.round(sum * 100d) / 100d;
+//
+//        totalAmount.setText(String.format("Total : %s", sum));
+//        myAdapter.notifyDataSetChanged();
+//    }
+
     public static class buyStuffMsg extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("You are about to buy everything currently in the shoppingcart. Do you want to continue?")
-                    .setTitle("Express Delivery Guarenteed by the boys from the Dwarf")
+            builder.setMessage("You are about to buy everything currently in the shoppingcart. \n" +
+                            "Money will automatically be withdrawn from your account. \n " +
+                            "Do you want to continue?")
+                    .setTitle("Express Delivery Guarenteed by the Boys from the Dwarf")
                     .setIcon(R.mipmap.red_dwarf_logo)
                     .setNegativeButton("Don't buy", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -97,8 +110,7 @@ public class BasketActivity extends AppCompatActivity {
                     })
                     .setPositiveButton("Buy it all!!", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            showCustomToast(getContext(), "Great. \n Money has been automatically withdrawn from your account.");
-                            showCustomToast(getContext(),"Your delivery will arrive in approximately 3 million years.");
+                            showCustomToast(getContext(), "Your delivery will arrive in approximately 3 million years.");
                             showCustomToast(getContext(), "Oh, and thank you for your business.");
                             basketList.clear();
                             startActivity(new Intent(getContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -121,6 +133,7 @@ public class BasketActivity extends AppCompatActivity {
 
         // Set the message and icon (optional)
         text.setText(message);
+//        icon.setImageResource(R.mipmap.red_dwarf_logo);
 
         // Create and show the Toast
         Toast toast = new Toast(context);

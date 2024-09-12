@@ -27,6 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:textColor="@color/red"
+            android:fontFamily="@font/baskervville"
             android:text="@string/name_of_product"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -37,26 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/baskervville"
             android:maxWidth="250dp"
             android:text="@string/product_description"
             android:textSize="20sp" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/product_quote"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="@string/product_related_quote" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/product_series_number"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="@string/the_series_where_the_product_first_appeared" />-->
-
 
         <!--quantity in basket-->
         <LinearLayout
@@ -70,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/baskervville"
                 android:text="@string/price"
                 android:textStyle="bold" />
 
@@ -78,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/baskervville"
                 android:text="@string/quantity"
                 android:textStyle="bold" />
 
@@ -85,6 +73,7 @@
                 android:id="@+id/number_of_items_in_basket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/baskervville"
                 android:layout_margin="10dp"
                 android:text="@string/zero" />
         </LinearLayout>

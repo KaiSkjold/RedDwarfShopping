@@ -49,9 +49,9 @@ public class ShowProductActivity extends AppCompatActivity {
             // Set product details to views
             name.setText(product.getName());
             description.setText(product.getDescription());
-            quote.setText(String.format("Famous quote: %s", product.getQuote()));
+            quote.setText(String.format("\" %s \"", product.getQuote()));
             series.setText(String.format("First appeared in series: %s", product.getSeriesNumber()));
-            price.setText(String.format("%s£", product.getPrice()));
+            price.setText(String.format("%s £ ", product.getPrice()));
 
             Glide.with(this)
                     .load(product.getImage())

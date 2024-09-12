@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Name"
+            android:fontFamily="@font/baskervville"
+            android:textColor="@color/red"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -33,11 +35,13 @@
             android:id="@+id/crew_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/baskervville"
             android:layout_margin="10dp"
             android:text="nickname"/>
 
         <TextView
             android:id="@+id/crew_job"
+            android:fontFamily="@font/baskervville"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -48,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/baskervville"
             android:text="species" />
 
         <TextView
@@ -55,6 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:textStyle="italic"
+            android:fontFamily="@font/baskervville"
             android:text="famous quote" />
 
         <TextView
@@ -62,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/baskervville"
             android:text="origin" />
 
 

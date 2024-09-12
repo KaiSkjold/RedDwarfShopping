@@ -131,7 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:fontFamily="@font/architects_daughter"
+            android:fontFamily="@font/baskervville"
+            android:textColor="@color/red"
             android:text="@string/selection"
             android:textSize="25sp" />
 

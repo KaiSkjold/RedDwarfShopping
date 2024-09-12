@@ -41,7 +41,7 @@ public class CrewAdapter extends ArrayAdapter<Crew> {
         Crew currentCrewMember = crewList.get(position);
 
         TextView name = crewListPerson.findViewById(R.id.crew_name);
-        name.setText(String.format("Name: %s",currentCrewMember.name));
+        name.setText(String.format("%s",currentCrewMember.name));
 
         TextView nickname = crewListPerson.findViewById(R.id.crew_nickname);
         nickname.setText(String.format("Nickname: %s", currentCrewMember.nickName));
@@ -53,7 +53,7 @@ public class CrewAdapter extends ArrayAdapter<Crew> {
         species.setText(String.format("Species: %s", currentCrewMember.species));
 
         TextView quote = crewListPerson.findViewById(R.id.crew_quote);
-        quote.setText(String.format("Famous quote: %s", currentCrewMember.quote));
+        quote.setText(String.format("\" %s \"", currentCrewMember.quote));
 
         TextView origin = crewListPerson.findViewById(R.id.crew_place_of_origin);
         origin.setText(String.format("Origin: %s", currentCrewMember.placeOfOrigin));

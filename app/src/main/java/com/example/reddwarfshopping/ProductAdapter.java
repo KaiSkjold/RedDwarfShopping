@@ -1,9 +1,7 @@
 package com.example.reddwarfshopping;
 
 
-import static androidx.core.content.ContextCompat.startActivity;
 import static com.example.reddwarfshopping.ProductsData.basketList;
-import static com.example.reddwarfshopping.ProductsData.totalPrice;
 
 import android.content.Context;
 import android.content.Intent;
@@ -51,55 +49,46 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         Product currentProduct = productList.get(position);
 
-        if(basketList.isEmpty()) {
-            currentProduct.setQuantity(0);
-            totalPrice = 0.0;
-        }
         TextView name = productListItem.findViewById(R.id.product_name);
         name.setText(currentProduct.name);
 
         TextView description = productListItem.findViewById(R.id.product_description);
         description.setText(currentProduct.description);
 
-//        TextView quote = productListItem.findViewById(R.id.product_quote);
-//        quote.setText(String.format("Famous quote: %s", currentProduct.quote));
-//
-//        TextView series = productListItem.findViewById(R.id.product_series_number);
-//        series.setText(String.format("First appeared in series: %s", currentProduct.seriesNumber));
-
         TextView price = productListItem.findViewById(R.id.product_price);
-        price.setText(String.format("%s£", currentProduct.price));
+        price.setText(String.format("%s £ ", currentProduct.price));
 
         TextView quantity = productListItem.findViewById(R.id.number_of_items_in_basket);
-        quantity.setText(String.valueOf(currentProduct.Quantity));
+        quantity.setText(String.valueOf(currentProduct.quantity));
 
 
         Button addToBasketBtn = productListItem.findViewById(R.id.add_to_basket_btn);
         addToBasketBtn.setOnClickListener(view -> {
-
-            int quan = currentProduct.Quantity + 1;
+            int quan = currentProduct.quantity + 1;
             currentProduct.setQuantity(quan);
-            quantity.setText(String.valueOf(currentProduct.Quantity));
+            quantity.setText(String.valueOf(currentProduct.quantity));
+
             if (!basketList.contains(currentProduct)) {
                 basketList.add(currentProduct);
             }
-            totalPrice += currentProduct.price;
         });
 
         Button removeFromBasketBtn = productListItem.findViewById(R.id.remove_from_basket_btn);
         removeFromBasketBtn.setOnClickListener(view -> {
 
-            int quan = currentProduct.Quantity - 1;
-            if (currentProduct.Quantity <= 0) {
+            int quan = currentProduct.quantity - 1;
+            quantity.setText(String.valueOf(currentProduct.quantity));
+
+            if(currentProduct.quantity <= 0) {
                 currentProduct.setQuantity(0);
             } else {
                 currentProduct.setQuantity(quan);
             }
-            quantity.setText(String.valueOf(currentProduct.Quantity));
-            if (currentProduct.Quantity == 0) {
+
+            if(currentProduct.quantity == 0) {
                 basketList.remove(currentProduct);
+                notifyDataSetChanged();
             }
-            totalPrice -= currentProduct.price;
         });
 
         ImageView image = productListItem.findViewById(R.id.product_image);
