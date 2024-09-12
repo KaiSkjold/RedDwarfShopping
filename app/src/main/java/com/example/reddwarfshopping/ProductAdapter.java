@@ -88,6 +88,9 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             if(currentProduct.quantity == 0) {
                 basketList.remove(currentProduct);
                 notifyDataSetChanged();
+                if (context instanceof BasketActivity) {
+                    ((BasketActivity) context).setTotal();
+                }
             }
         });
 

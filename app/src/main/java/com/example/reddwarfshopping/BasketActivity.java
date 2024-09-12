@@ -32,7 +32,8 @@ public class BasketActivity extends AppCompatActivity {
     ProductAdapter myAdapter;
     Button closeBasketbtn;
     Button buyStuff;
-//    TextView totalAmount;
+//    Button updatePriceBtn;
+    TextView totalAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,22 +51,29 @@ public class BasketActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-//        setTotal();
+        setTotal();
         initGui();
     }
 
 
     void initGui() {
 
+//        // update price
+//        updatePriceBtn = findViewById(R.id.update_price_btn);
+//        updatePriceBtn.setOnClickListener(view -> {
+//            setTotal();
+//        });
 
         // buy and finish
         buyStuff = findViewById(R.id.buy_btn);
         if (shoppingListBasket.isEmpty()) {
             buyStuff.setOnClickListener(view -> {
+                setTotal();
                 showCustomToast(getApplicationContext(), "Your shoppingcart is empty.");
             });
         } else {
             buyStuff.setOnClickListener(view -> {
+                setTotal();
                 FragmentManager fm = getSupportFragmentManager();
                 new buyStuffMsg().show(fm, "Dialog");
             });
@@ -80,17 +88,17 @@ public class BasketActivity extends AppCompatActivity {
         });
     }
 
-//    void setTotal(){
-//        totalAmount = findViewById(R.id.total_in_basket);
-//        double sum = 1e-6;
-//        for (Product i : basketList){
-//            sum += (i.getPrice() * i.getQuantity());
-//        }
-//        sum = (double)Math.round(sum * 100d) / 100d;
-//
-//        totalAmount.setText(String.format("Total : %s", sum));
-//        myAdapter.notifyDataSetChanged();
-//    }
+    void setTotal(){
+        totalAmount = findViewById(R.id.total_in_basket);
+        double sum = 1e-6;
+        for (Product i : basketList){
+            sum += (i.getPrice() * i.getQuantity());
+        }
+        sum = (double)Math.round(sum * 100d) / 100d;
+
+        totalAmount.setText(String.format("Total : %s", sum));
+        myAdapter.notifyDataSetChanged();
+    }
 
     public static class buyStuffMsg extends DialogFragment {
         @Override
@@ -122,7 +130,7 @@ public class BasketActivity extends AppCompatActivity {
         }
     }
 
-    private static void showCustomToast(Context context, String message) {
+    public static void showCustomToast(Context context, String message) {
         // Inflate the custom toast layout
         LayoutInflater inflater = LayoutInflater.from(context);
         View layout = inflater.inflate(R.layout.custom_toast, null);
