@@ -111,7 +111,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     }
 
     void getProductById(int productId) {
-        String url = "http://192.168.0.121:8080/reddwarf";
+        String url = "http://192.168.39.181:8080/reddwarf";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
 
         String urlId = url + "/" + productId;

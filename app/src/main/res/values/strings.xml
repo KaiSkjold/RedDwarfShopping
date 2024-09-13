@@ -30,6 +30,6 @@
     <string name="input_search_landscape">Feel free to search for more info on google here</string>
     <string name="update_total">update</string>
     <string name="login_title">login title</string>
-    <string name="welcome">Welcome \n Red dwarf shopping</string>
+    <string name="welcome">Welcome to \n Red dwarf shopping</string>
     <string name="login">login</string>
 </resources>

@@ -131,7 +131,6 @@ public class BasketActivity extends AppCompatActivity {
     }
 
     public static void showCustomToast(Context context, String message) {
-        // Inflate the custom toast layout
         LayoutInflater inflater = LayoutInflater.from(context);
         View layout = inflater.inflate(R.layout.custom_toast, null);
 
@@ -141,7 +140,7 @@ public class BasketActivity extends AppCompatActivity {
 
         // Set the message and icon (optional)
         text.setText(message);
-//        icon.setImageResource(R.mipmap.red_dwarf_logo);
+        // icon.setImageResource(R.mipmap.red_dwarf_logo);
 
         // Create and show the Toast
         Toast toast = new Toast(context);

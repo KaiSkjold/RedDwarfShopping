@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView shoppingList;
     private RequestQueue requestQueue;
-    String url = "http://192.168.0.121:8080/reddwarf";
+    String url = "http://192.168.39.181:8080/reddwarf";
     List<Product> productList;
     ProductAdapter myAdapter;
     Button jmcBtn;

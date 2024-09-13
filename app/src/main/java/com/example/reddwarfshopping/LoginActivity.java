@@ -32,15 +32,14 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize UI elements
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         loginImg = findViewById(R.id.login_image);
         Glide.with(getApplicationContext())
                 .load("https://images.immediate.co.uk/production/volatile/sites/3/2020/03/dear-dave.v1-1f059c8.jpg?quality=90&webp=true&resize=1050,700")
-                .placeholder(R.mipmap.red_dwarf_ship) // optional placeholder while loading
-                .error(R.mipmap.red_dwarf_ship) // optional error image if the URL fails to load
+                .placeholder(R.mipmap.red_dwarf_ship)
+                .error(R.mipmap.red_dwarf_ship)
                 .into(loginImg);
 
         // Set a click listener for the login button
@@ -51,16 +50,12 @@ public class LoginActivity extends AppCompatActivity {
                 String username = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-//                https://images.immediate.co.uk/production/volatile/sites/3/2020/03/dear-dave.v1-1f059c8.jpg?quality=90&webp=true&resize=1050,700
 
-                // Implement authentication logic here
                 if (username.equals("Admin") | (username.equals("User")) && password.equals("aMoose")) {
-                    // Successful login
                     BasketActivity.showCustomToast(getApplicationContext(), "Login successful");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 } else {
-                    // Failed login
                     BasketActivity.showCustomToast(getApplicationContext(), "Invalid username or password");
                 }
             }
